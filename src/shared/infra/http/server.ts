@@ -20,6 +20,10 @@ app.use(routes);
 
 app.use(errors);
 
+app.get('/', (request, response) => {
+  return response.json({ ok: 'Bem-vindo a api backend - Solides' });
+});
+
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {
     return response
