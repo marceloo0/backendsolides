@@ -65,6 +65,17 @@ class AppointmentsRepository implements IAppointmentsRepository {
     return appointments;
   }
 
+  public async findAll({
+    user_id,
+  }: ICreateAppointmentDTO): Promise<Appointment[]> {
+    const appointments = this.ormRepository.find({
+      where: {
+        user_id,
+      },
+    });
+    return appointments;
+  }
+
   public async create({
     user_id,
     date,
