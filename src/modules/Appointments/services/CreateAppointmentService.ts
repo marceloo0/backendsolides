@@ -19,12 +19,17 @@ class CreateAppointmentService {
   ) {}
 
   public async execute({ date, user_id }: IRequest): Promise<Appointment> {
+    // const appointmentDate = startOfHour(date);
 
-    if (getHours(date) < 8 || getHours(date) > 18) {
-      throw new AppError(
-        'You can only create appointments between 8am and 6pm',
-      );
-    }
+    // if (isBefore(date, Date.now())) {
+    //   throw new AppError("You can't create an appointemnt on a past date.");
+    // }
+
+    // if (getHours(date) < 8 || getHours(date) > 18) {
+    //   throw new AppError(
+    //     'You can only create appointments between 8am and 6pm',
+    //   );
+    // }
 
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       date,
